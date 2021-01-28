@@ -1,0 +1,1 @@
+# Vidly Web App Project Practice using MVC 5 and Entity Framework
