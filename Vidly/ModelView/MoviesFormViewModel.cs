@@ -19,5 +19,6 @@ namespace Vidly.ModelView
                 return "New Movie";
             }
         }
+      
     }
 }
