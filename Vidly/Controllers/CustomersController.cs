@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.Models.Vidly.Models;
+using Vidly.ModelView;
 
 namespace Vidly.Controllers
 {
@@ -15,6 +13,7 @@ namespace Vidly.Controllers
         //use applicationdbcontext to query the data from database
         private ApplicationDbContext _context = new ApplicationDbContext();
 
+   
 
         // DbContext is a disposable object
         protected override void Dispose(bool disposing)
@@ -30,7 +29,62 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-      
+        public ActionResult New()
+        {
+            var memeberList = _context.MembershipTypes.ToList();
+            CustomerFormViewModel viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = memeberList
+            };
+
+            return View("CustomerForm" ,viewModel);
+        }
+
+        //Model Binding
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if(customer.CustomerId == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.CustomerId == customer.CustomerId);
+                /*Using AutoMapper Package
+                 * Mapper.Map("customer", customerInDb);
+                 */
+                customerInDb.CustomerName = customer.CustomerName;
+                customerInDb.BirthDate = customer.BirthDate;
+                customer.MembershipTypeId = customer.MembershipTypeId;
+                customer.IsSubscribedToCustomer = customer.IsSubscribedToCustomer;
+            
+            }
+            
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
+
+        //Edit Customer Action
+        //this id is a hidden field declared in CustomerForm before submitting
+        public ActionResult EditForm(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            if (customer == null)
+            {
+                return HttpNotFound("No Customer Found!");
+            }
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModel);
+        }
+
+
+
+
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.CustomerId == id);
