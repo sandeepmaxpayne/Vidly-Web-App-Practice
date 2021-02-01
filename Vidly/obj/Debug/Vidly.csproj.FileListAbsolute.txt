@@ -103,3 +103,11 @@ C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.C
 C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.CreateMoviesTable.resources
 C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.InsertGenre.resources
 C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\obj\Debug\Vidly.Migrations.InsertMovies.resources
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Net.Http.Formatting.dll
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Web.Http.dll
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Web.Http.WebHost.dll
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Net.Http.Formatting.xml
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Web.Http.xml
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\System.Web.Http.WebHost.xml
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\AutoMapper.dll
+C:\Users\Sandeep\Desktop\PracticeCSharp\Vidly\Vidly\bin\AutoMapper.xml
