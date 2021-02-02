@@ -20,6 +20,8 @@ namespace Vidly.Dtos
       //  [Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
 
+        public MembershipTypeDto MembershipType { get; set; }
+
         //Add foreign key
         [Required(ErrorMessage = "Member Type Required")]
         public byte MembershipTypeId { get; set; }
