@@ -22,6 +22,8 @@ namespace Vidly.Dtos
         public DateTime ReleaseDate { get; set; }
         public DateTime DateAdded { get; set; }
 
+        public GenreDto Genre { get; set; }
+
         [Range(1, 20)]
         public int Stock { get; set; }
     }

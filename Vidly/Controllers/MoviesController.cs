@@ -26,6 +26,7 @@ namespace Vidly.Controllers
         {
             var movie = _context.Movies.Include(m => m.Genre).ToList();
             return View(movie);
+            // return View();
         }
 
         /*private IEnumerable<Movie> GetMovie()
