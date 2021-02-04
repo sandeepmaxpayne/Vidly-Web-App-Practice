@@ -19,13 +19,21 @@ namespace Vidly.Controllers.Api
         private ApplicationDbContext _context = new ApplicationDbContext();
 
         //By convention GetCustomers is GET /api/Customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers(string query = null)
         {
-       
-            return _context.Customers
-                .Include(c => c.MembershipType)
+
+            var customerQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if(!String.IsNullOrWhiteSpace(query))
+            {
+                customerQuery = customerQuery.Where(c => c.CustomerName.Contains(query));
+            }
+
+            var customerDtos = customerQuery
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
+            return customerDtos;
         }
 
         //Get Customer by ID => GET /api/Custoemrs/1
